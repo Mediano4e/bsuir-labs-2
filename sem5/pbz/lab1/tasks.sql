@@ -27,8 +27,7 @@ FROM quantities q
 JOIN suppliers s ON q.supplier_id = s.id
 JOIN products p ON q.product_id = p.id
 JOIN projects pr ON q.project_id = pr.id
-WHERE s.city = p.city
-AND p.city = pr.city;
+WHERE s.city = p.city AND p.city = pr.city;
 
 -- Задача №1: -- ++++++
 SELECT * 
@@ -51,14 +50,17 @@ WHERE s.city != p.city;
 SELECT s.id AS supplier_id, p.id AS product_id
 FROM suppliers s
 CROSS JOIN products p
-LEFT JOIN quantities q ON s.id = q.supplier_id AND p.id = q.product_id
-WHERE q.supplier_id IS NULL;
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM quantities q
+    WHERE q.supplier_id = s.id AND q.product_id = p.id
+);
 
 -- Задача №18: --
 SELECT DISTINCT q.product_id
 FROM quantities q
 JOIN (
-    SELECT project_id, AVG(quantity) AS avg_quantity
+    SELECT project_id
     FROM quantities
     GROUP BY project_id
     HAVING AVG(quantity) > 320
@@ -73,3 +75,9 @@ FROM products
 INTERSECT
 SELECT city
 FROM projects;
+
+-----------------------
+SELECT DISTINCT s.city
+FROM suppliers s
+JOIN products p ON s.city = p.city
+JOIN projects pr ON s.city = pr.city;
