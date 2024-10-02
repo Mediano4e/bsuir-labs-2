@@ -1,4 +1,4 @@
--- Задача №24: -- ++++++
+-- Задача №24: --
 SELECT id
 FROM suppliers
 WHERE status < (SELECT status FROM suppliers WHERE id = 1);
@@ -29,7 +29,7 @@ JOIN products p ON q.product_id = p.id
 JOIN projects pr ON q.project_id = pr.id
 WHERE s.city = p.city AND p.city = pr.city;
 
--- Задача №1: -- ++++++
+-- Задача №1: --
 SELECT * 
 FROM projects;
 
@@ -57,27 +57,18 @@ WHERE NOT EXISTS (
 );
 
 -- Задача №18: --
-SELECT DISTINCT q.product_id
-FROM quantities q
-JOIN (
-    SELECT project_id
-    FROM quantities
-    GROUP BY project_id
-    HAVING AVG(quantity) > 320
-) avg_q ON q.project_id = avg_q.project_id;
+SELECT product_id
+FROM quantities
+GROUP BY product_id
+HAVING AVG(quantity) > 320;
 
--- Задача №33: -- ++++++
+
+-- Задача №33: -- 
 SELECT city
 FROM suppliers
-INTERSECT
+UNION
 SELECT city
 FROM products
-INTERSECT
+UNION
 SELECT city
 FROM projects;
-
------------------------
-SELECT DISTINCT s.city
-FROM suppliers s
-JOIN products p ON s.city = p.city
-JOIN projects pr ON s.city = pr.city;
