@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Окно Агрономов</title>
+<style>
+  body {
+    margin: 0;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #1c3b2f; /* Тёмно-зелёный фон */
+    font-family: Arial, sans-serif;
+    color: #ffffff;
+  }
+
+  /* Основное окно */
+  .app-window {
+    width: 620px;
+    height: 420px;
+    background-color: #244d3a; /* Ещё более тёмно-зелёный цвет */
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+
+  /* Кнопка Назад */
+  .back-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 30px;
+    height: 30px;
+    background-color: #ffffff; /* Белый фон */
+    color: #244d3a; /* Тёмно-зелёный цвет стрелки */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  /* Подпись "Агрономов: 3" */
+  .title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  /* Сетка с квадратиками */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+    width: 100%;
+    margin-bottom: 40px; /* Опустим сетку немного ниже */
+  }
+
+  /* Стандартные квадратики */
+  .grid div {
+    width: 80px;
+    height: 80px;
+    background-color: #ffffff; /* Белый цвет */
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Коричневые квадратики */
+  .grid .brown {
+    background-color: #8b5a2b; /* Коричневый цвет */
+  }
+
+  /* Рисунок растения */
+  .plant {
+    font-size: 24px;
+    color: #d1e7c0; /* Бледно-зелёный цвет для рисунка */
+  }
+
+  /* Нижняя панель с кнопкой и полем ввода */
+  .bottom-panel {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+    margin-top: auto;
+    margin-bottom: 0px; /* Отступ от нижней части окна */
+  }
+
+  .wait-button {
+    width: 512px;
+    height: 50px;
+    background-color: #123227;
+    color: #ffffff;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .input-box {
+    width: 80px;
+    height: 50px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 50px;
+    color: #244d3a;
+    font-weight: bold;
+  }
+
+  /* Полоса прокрутки справа */
+  .scroll-bar {
+    position: absolute;
+    right: 10px;
+    top: 60px; /* Позиция чуть ниже заголовка */
+    bottom: 80px; /* Позиция чуть выше нижней панели */
+    width: 5px;
+    background-color: #123227; /* Цвет полосы */
+    border-radius: 2px;
+  }
+
+  /* Ползунок */
+  .scroll-thumb {
+    width: 100%;
+    height: 60px; /* Высота ползунка */
+    background-color: #8b5a2b; /* Коричневый цвет ползунка */
+    border-radius: 2px;
+    margin-top: 20px; /* Отступ сверху для визуального эффекта */
+  }
+</style>
+</head>
+<body>
+
+<div class="app-window">
+  <!-- Кнопка Назад -->
+  <a href="#" class="back-button">←</a>
+
+  <div class="title">Агрономов: 3</div>
+  
+  <div class="grid">
+    <div class="brown plant">🌱</div>
+    <div class="brown"></div>
+    <div class="brown plant">🌿</div>
+    <div></div>
+    <div class="brown"></div>
+    <div class="brown plant">🌱</div>
+    <div></div>
+    <div class="brown"></div>
+    <div></div>
+    <div class="brown"></div>
+	<div class="brown plant">🌿</div>
+    <div class="brown"></div>
+    <div></div>
+    <div></div>
+  </div>
+  
+  <div class="bottom-panel">
+    <div class="wait-button">Ждать</div>
+    <div class="input-box">10</div>
+  </div>
+
+  <!-- Полоса прокрутки справа -->
+  <div class="scroll-bar">
+    <div class="scroll-thumb"></div>
+  </div>
+</div>
+
+</body>
+</html>
