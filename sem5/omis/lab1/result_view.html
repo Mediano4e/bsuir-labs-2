@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Советы</title>
+<style>
+  body {
+    margin: 0;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #1c3b2f;
+    font-family: Arial, sans-serif;
+    color: #ffffff;
+  }
+
+  .app-window {
+    width: 620px;
+    height: 420px;
+    background-color: #244d3a;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+
+  .app-window::-webkit-scrollbar-track {
+    background: #3b7a5e; /* Цвет фона скроллбара */
+    border-radius: 10px; /* Закругление углов */
+  }
+
+  .app-window::-webkit-scrollbar-thumb {
+    background: #6b4c3b; /* Цвет ползунка скроллбара */
+    border-radius: 10px; /* Закругление углов */
+  }
+
+  .back-button {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 30px;
+    height: 30px;
+    background-color: #ffffff;
+    color: #244d3a;
+    border-radius: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .close-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+    background-color: #ff4c4c;
+    color: #ffffff;
+    border-radius: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+
+  .agronom-info {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .agronom-label {
+    font-size: 18px;
+    font-weight: bold;
+    color: #d1e7c0;
+  }
+
+  .section {
+    width: 95%;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #2b5e49;
+    border-radius: 10px;
+    margin-right: 20px; /* Смещение влево */
+  }
+
+  .section-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #d1e7c0;
+  }
+
+  .advice-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 0;
+    border-bottom: 1px solid #d1e7c0;
+  }
+
+  .advice-label {
+    font-size: 14px;
+    color: #ffffff;
+  }
+
+  .advice-bar {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    padding: 3px;
+    width: 120px; /* Ширина полоски для 10 кубиков */
+  }
+
+  .advice-bar div {
+    width: 12px;
+    height: 12px;
+    background-color: #808080;
+    border-radius: 3px;
+  }
+  
+  .scroll-bar {
+    position: absolute;
+    right: 10px;
+    top: 100px; /* Позиция чуть ниже заголовка */
+    bottom: 20px; /* Позиция чуть выше нижней панели */
+    width: 5px;
+    background-color: #123227; /* Цвет полосы */
+    border-radius: 2px;
+  }
+
+  /* Ползунок */
+  .scroll-thumb {
+    width: 100%;
+    height: 60px; /* Высота ползунка */
+    background-color: #8b5a2b; /* Коричневый цвет ползунка */
+    border-radius: 2px;
+    margin-top: 20px; /* Отступ сверху для визуального эффекта */
+  }
+</style>
+</head>
+<body>
+
+<div class="app-window">
+  <!-- Кнопка Назад -->
+  <a href="#" class="back-button">←</a>
+
+  <!-- Кнопка Закрыть -->
+  <a href="#" class="close-button">✕</a>
+
+  <div class="title">Советы</div>
+  
+  <!-- Информация об агрономе -->
+  <div class="agronom-info">
+    <span class="agronom-label">Агроном 1:</span>
+  </div>
+
+  <!-- Участки и советы -->
+  <div class="section">
+    <div class="section-title">Участок 1</div>
+    <div class="advice-item">
+      <span class="advice-label">Нужно исправить влажность</span>
+      <div class="advice-bar">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <div class="advice-item">
+      <span class="advice-label">Нужно снизить загрязнение</span>
+      <div class="advice-bar">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Участок 2</div>
+    <div class="advice-item">
+      <span class="advice-label">Оптимизировать температуру</span>
+      <div class="advice-bar">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Участок 3</div>
+    <div class="advice-item">
+      <span class="advice-label">Исправить качество почвы</span>
+      <div class="advice-bar">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Участок 4</div>
+    <div class="advice-item">
+      <span class="advice-label">Устранить уровень загрязнения</span>
+      <div class="advice-bar">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-bar">
+    <div class="scroll-thumb"></div>
+  </div>
+</div>
+
+</body>
+</html>

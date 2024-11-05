@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Окно Агрономов</title>
+<style>
+  body {
+    margin: 0;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #1c3b2f;
+    font-family: Arial, sans-serif;
+    color: #ffffff;
+  }
+
+  .app-window {
+    width: 620px;
+    height: 420px;
+    background-color: #244d3a;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+
+  .close-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+    background-color: #ff4c4c;
+    color: #ffffff;
+    border-radius: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  .input-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .input-box {
+    width: 240px;
+    height: 50px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    text-align: center;
+    color: #244d3a;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 50px;
+  }
+
+  .plant-icon {
+    font-size: 132px; /* Увеличенный размер смайлика */
+    margin: 20px 0;
+  }
+
+  .bottom-panel {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: auto;
+  }
+
+  .confirm-button {
+    width: 100%;
+    height: 50px;
+    background-color: #123227;
+    color: #ffffff;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<div class="app-window">
+  <!-- Кнопка Закрыть -->
+  <a href="#" class="close-button">✕</a>
+
+  <div class="title">Настройка параметров</div>
+  
+  <div class="input-fields">
+    <div class="input-box">Количество агрономов</div>
+    <div class="input-box">Количество полей</div>
+  </div>
+
+  <!-- Очень большой смайлик растения -->
+  <div class="plant-icon">🌱</div>
+  
+  <div class="bottom-panel">
+    <div class="confirm-button">Подтвердить</div>
+  </div>
+</div>
+
+</body>
+</html>

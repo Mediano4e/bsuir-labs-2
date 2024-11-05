@@ -33,17 +33,36 @@
   /* Кнопка Назад */
   .back-button {
     position: absolute;
-    top: 10px;
-    left: 10px;
+    top: 15px;
+    left: 15px;
     width: 30px;
     height: 30px;
     background-color: #ffffff; /* Белый фон */
     color: #244d3a; /* Тёмно-зелёный цвет стрелки */
-    border-radius: 50%;
+    border-radius: 40%;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 32px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  /* Кнопка Закрыть */
+  .close-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+    background-color: #ff4c4c; /* Красный цвет */
+    color: #ffffff; /* Белый цвет крестика */
+    border-radius: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
     font-weight: bold;
     cursor: pointer;
     text-decoration: none;
@@ -147,6 +166,9 @@
   <!-- Кнопка Назад -->
   <a href="#" class="back-button">←</a>
 
+  <!-- Кнопка Закрыть -->
+  <a href="#" class="close-button">✕</a>
+
   <div class="title">Агрономов: 3</div>
   
   <div class="grid">
@@ -179,3 +201,4 @@
 
 </body>
 </html>
+

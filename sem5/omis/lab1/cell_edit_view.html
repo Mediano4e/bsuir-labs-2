@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Редактирование Параметров Участка</title>
+<style>
+  body {
+    margin: 0;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #1c3b2f;
+    font-family: Arial, sans-serif;
+    color: #ffffff;
+  }
+
+  .app-window {
+    width: 620px;
+    height: 420px;
+    background-color: #244d3a;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+
+  .back-button {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 30px;
+    height: 30px;
+    background-color: #ffffff;
+    color: #244d3a;
+    border-radius: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .close-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+    background-color: #ff4c4c;
+    color: #ffffff;
+    border-radius: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  .parameter-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .form-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #d1e7c0;
+  }
+
+  .form-item:last-child {
+    border-bottom: none;
+  }
+
+  .form-label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #d1e7c0;
+  }
+
+  .form-input {
+    background-color: #ffffff;
+    color: #244d3a;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 16px;
+    width: 60%;
+  }
+
+  .form-input:focus {
+    outline: none;
+  }
+
+  .bottom-panel {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: auto;
+  }
+
+  .save-button {
+    width: 100%;
+    height: 50px;
+    background-color: #123227;
+    color: #ffffff;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<div class="app-window">
+  <!-- Кнопка Назад -->
+  <a href="#" class="back-button">←</a>
+
+  <!-- Кнопка Закрыть -->
+  <a href="#" class="close-button">✕</a>
+
+  <div class="title">Редактирование Параметров Участка</div>
+  
+  <!-- Форма параметров участка -->
+  <div class="parameter-form">
+    <div class="form-item">
+      <label class="form-label">Площадь участка (га)</label>
+      <input type="text" class="form-input" placeholder="Введите площадь">
+    </div>
+
+    <div class="form-item">
+      <label class="form-label">Произрастающее растение</label>
+      <input type="text" class="form-input" placeholder="Введите тип растения">
+    </div>
+
+    <div class="form-item">
+      <label class="form-label">Влажность почвы</label>
+      <input type="text" class="form-input" placeholder="Введите значение (1-10)">
+    </div>
+
+    <div class="form-item">
+      <label class="form-label">Температура</label>
+      <input type="text" class="form-input" placeholder="Введите значение (1-10)">
+    </div>
+
+    <div class="form-item">
+      <label class="form-label">Уровень загрязнения</label>
+      <input type="text" class="form-input" placeholder="Введите значение (1-10)">
+    </div>
+
+    <div class="form-item">
+      <label class="form-label">Качество почвы</label>
+      <input type="text" class="form-input" placeholder="Введите значение (1-10)">
+    </div>
+  </div>
+
+  <div class="bottom-panel">
+    <div class="save-button">Сохранить</div>
+  </div>
+</div>
+
+</body>
+</html>
