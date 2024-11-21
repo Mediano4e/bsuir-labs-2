@@ -67,7 +67,7 @@ HAVING AVG(quantity) > 320;
 SELECT city
 FROM suppliers
 UNION
-SELECT city
+SELECT color
 FROM products
 UNION
 SELECT city
