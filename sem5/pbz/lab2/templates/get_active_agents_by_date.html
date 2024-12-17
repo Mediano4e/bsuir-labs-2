@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Active Agents By Date</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            background-color: #4CAF50;
+            color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 32px;
+        }
+        .content {
+            margin-top: 100px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .form-container {
+            width: 90%;
+            max-width: 400px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .form-container label {
+            display: block;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+        .form-container input {
+            width: 100%;
+            max-width: 380px;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-container button {
+            padding: 12px 25px;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            width: 100%;
+        }
+        .form-container button[type="submit"] {
+            background-color: #4CAF50;
+        }
+        .form-container button[type="submit"]:hover {
+            transform: scale(1.05);
+        }
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            width: 100%;
+        }
+        .button-container button {
+            width: 48%;
+        }
+        .back-button {
+            background-color: #9e9e9e;
+        }
+        .back-button:hover {
+            transform: scale(1.05);
+        }
+        table {
+            width: 90%;
+            margin-top: 20px;
+            border-collapse: collapse;
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        td {
+            background-color: #fafafa;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Find Active Insurance Agents by Date</h1>
+    </div>
+
+    <div class="content">
+        <div class="form-container">
+            <form action="/get_active_agents_by_date" method="post">
+                <label for="org_id">Organization ID:</label>
+                <input type="number" id="org_id" name="org_id" required><br>
+
+                <label for="p_date">Date (YYYY-MM-DD):</label>
+                <input type="date" id="p_date" name="p_date" required><br>
+
+                <div class="button-container">
+                    <button type="button" class="back-button" onclick="location.href='/'">Back to Main Menu</button>
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    {% if rows %}
+    <table>
+        <thead>
+            <tr>
+                {% for column in columns %}
+                    <th>{{ column }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in rows %}
+                <tr>
+                    {% for cell in row %}
+                        <td>{{ cell }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+</body>
+</html>
+

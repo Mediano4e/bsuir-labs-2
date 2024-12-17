@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Menu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            background-color: #4CAF50;
+            color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 32px;
+        }
+        .content {
+            margin-top: 100px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .button {
+            padding: 15px 30px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.2s ease, background-color 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 200px;
+            height: 50px;
+            text-align: center;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .button:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+        .message {
+            margin-top: 20px;
+            padding: 15px 20px;
+            border-radius: 5px;
+            font-size: 18px;
+            text-align: center;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .success {
+            background-color: #dff0d8;
+            color: #3c763d;
+        }
+        .error {
+            background-color: #f2dede;
+            color: #a94442;
+        }
+        .section-title {
+            margin-top: 40px;
+            font-size: 24px;
+            color: #333;
+        }
+        .divider {
+            width: 80%;
+            max-width: 600px;
+            height: 2px;
+            background-color: #ccc;
+            margin: 40px 0;
+        }
+    </style>       
+</head>
+<body>
+    <div class="header">
+        <h1>Main Menu</h1>
+    </div>
+
+    <div class="content">
+        {% if message %}
+            <div class="message {{ message_type }}">
+                {{ message }}
+            </div>
+        {% endif %}
+
+        <!-- Editing Section -->
+        <div class="section-title">Editing</div>
+        <div class="button-container">
+            <button class="button" onclick="location.href='/add_organization_form'">Add Organization</button>
+            <button class="button" onclick="location.href='/update_organization_form'">Update Organization</button>
+            <button class="button" onclick="location.href='/delete_organization_form'">Delete Organization</button>
+        </div>
+        <div class="button-container">
+            <button class="button" onclick="location.href='/add_agent_form'">Add Agent</button>
+            <button class="button" onclick="location.href='/update_agent_form'">Update Agent</button>
+            <button class="button" onclick="location.href='/delete_agent_form'">Delete Agent</button>
+        </div>
+        <div class="button-container">
+            <button class="button" onclick="location.href='/add_employee_form'">Add Employee</button>
+            <button class="button" onclick="location.href='/update_employee_form'">Update Employee</button>
+            <button class="button" onclick="location.href='/delete_employee_form'">Delete Employee</button>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="section-title">Search Commands</div>
+        <div class="button-container">
+            <button class="button" onclick="location.href='/get_active_contracts_by_date_form'">Search Active Contracts</button>
+            <button class="button" onclick="location.href='/get_active_agents_by_date_form'">Search Active Agents</button>
+            <button class="button" onclick="location.href='/get_insurance_payments_form'">Search Payments For Emploees</button>
+        </div>
+    </div>
+</body>
+</html>
+

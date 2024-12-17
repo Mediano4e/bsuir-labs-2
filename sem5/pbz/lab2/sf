@@ -1,0 +1,106 @@
+CREATE TABLE risk_categories (
+    id INT PRIMARY KEY,
+    risk_name VARCHAR(255) NOT NULL
+);
+
+INSERT INTO risk_categories (id, risk_name)
+VALUES 
+(0, 'Very Low Risk'),
+(1, 'Low Risk'),
+(2, 'Medium Risk'),
+(3, 'High Risk'),
+(4, 'Very High Risk'),
+(5, 'Critical Risk');
+
+--------------------------------------------------------------------------
+
+CREATE TABLE organization (
+    id SERIAL PRIMARY KEY,
+    code VARCHAR(50) NOT NULL,
+    full_name VARCHAR(255) NOT NULL,
+    short_name VARCHAR(100) NOT NULL,
+    address TEXT NOT NULL,
+    specialization TEXT NOT NULL,
+    bank_details TEXT NOT NULL
+);
+
+INSERT INTO organization (code, full_name, short_name, address, specialization, bank_details)
+VALUES 
+('ORG001', 'Global Tech Solutions', 'GTS', '123 Main Street, Tech City', 'IT Services', 'GLOB1234'),
+('ORG002', 'HealthCare Corp', 'HCC', '456 Health Avenue, MedTown', 'Healthcare Services', 'HEAL5678'),
+('ORG003', 'EduCore Academy', 'ECA', '789 Learning Lane, EduTown', 'Education Services', 'EDU12345');
+
+
+--------------------------------------------------------------------------
+
+CREATE TABLE agent (
+    id SERIAL PRIMARY KEY,
+    full_name VARCHAR(255) NOT NULL,
+    passport_data VARCHAR(255) NOT NULL
+);
+
+
+INSERT INTO agent (full_name, passport_data)
+VALUES 
+('John Smith', 'ABC123456'),
+('Jane Doe', 'DEF789012'),
+('Mike Brown', 'GHI345678'),
+('Anna White', 'JKL901234'),
+('Robert Black', 'MNO567890');
+
+--------------------------------------------------------------------------
+
+CREATE TABLE contract (
+    id SERIAL PRIMARY KEY,
+    agent_id INT REFERENCES agent(id) ON DELETE CASCADE,
+    conclusion_date DATE NOT NULL,
+    duration INTERVAL NOT NULL
+);
+
+INSERT INTO contract (agent_id, conclusion_date, duration)
+VALUES 
+(1, '2023-01-15', '2 years'),
+(2, '2024-06-10', '1 year'),
+(3, '2022-08-20', '3 years'),
+(4, '2023-12-01', '1.5 years'),
+(5, '2024-03-25', '1 year');
+
+--------------------------------------------------------------------------
+
+CREATE TABLE payments (
+    id SERIAL PRIMARY KEY,
+    risk_category INT REFERENCES risk_categories(id) NOT NULL,
+    contract_id INT REFERENCES contract(id) ON DELETE CASCADE,
+    amount INT NOT NULL
+);
+
+--------------------------------------------------------------------------
+
+CREATE TABLE employee (
+    id SERIAL PRIMARY KEY,
+    full_name VARCHAR(255) NOT NULL,
+    age INT NOT NULL,
+    risk_category INT REFERENCES risk_categories(id) ON DELETE CASCADE,
+    contract_id INT REFERENCES contract(id) ON DELETE CASCADE,
+    organization_id INT REFERENCES organization(id) ON DELETE CASCADE
+);
+
+
+INSERT INTO employee (full_name, age, risk_category, contract_id, organization_id)
+VALUES 
+('Alice Johnson', 30, 1, 1, 1), 
+('Bob Williams', 35, 1, 1, 1), 
+('Clara Davis', 28, 2, 2, 1), 
+('David Harris', 40, 2, 2, 1),
+
+('Eve Taylor', 29, 3, 3, 2), 
+('Frank Moore', 45, 3, 3, 2), 
+('Grace Lee', 33, 4, 4, 2), 
+('Henry Wilson', 50, 4, 4, 2),
+
+('Ivy Hall', 31, 5, 5, 3), 
+('Jack Young', 38, 5, 5, 3), 
+('Karen Scott', 26, 5, 5, 3), 
+('Liam Turner', 48, 5, 5, 3);
+
+--------------------------------------------------------------------------

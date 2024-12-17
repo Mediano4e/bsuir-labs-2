@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  postgres_datadase:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "${DB_PORT}:5432"
+
+  app:
+    build: .
+    container_name: app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres_datadase
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+      - ./src:/app/src
+      - ./src/view:/app/src/view
+      - ./src/model:/app/src/model
+      - ./src/control:/app/src/control

@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+jinja2
+starlette
+itsdangerous
+python-multipart
+pydantic
+psycopg2-binary
+python-dotenv

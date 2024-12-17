@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Администратор</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            width: 720px;
+            margin: 50px auto;
+            border: 1px solid #ccc;
+            background-color: white;
+            border-radius: 5px;
+            overflow: hidden;
+        }        
+
+        .window-header {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .window-title {
+            font-size: 14px;
+            color: #333;
+        }
+
+        .window-controls {
+            display: flex;
+            gap: 5px;
+        }
+
+        .control-button {
+            width: 12px;
+            height: 12px;
+            border: 1px solid #ccc;
+            border-radius: 50%;
+            background: white;
+        }
+
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid #0095ff;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 14px;
+            flex: 1;
+            text-align: center;
+        }
+
+        .tab.active {
+            background-color: #0095ff;
+            color: white;
+        }
+
+        .content {
+            display: none;
+            padding: 20px;
+        }
+
+        .content.active {
+            display: block;
+        }
+
+        /* Стили для списков */
+        .list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .list li {
+            padding: 8px 15px;
+            border: 1px solid #ccc;
+            margin-bottom: -1px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .list li.selected {
+            background-color: #0095ff;
+            color: white;
+        }
+
+        /* Стили для формы создания */
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            height: 150px;
+            resize: none;
+            box-sizing: border-box;
+        }
+
+        .create-button {
+            background-color: #0095ff;
+            color: white;
+            border: none;
+            padding: 8px 30px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 3px;
+            display: block;
+            margin: 20px auto;
+        }
+
+        .pagination {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+        }
+
+        .pagination a {
+            color: #0095ff;
+            text-decoration: none;
+            padding: 3px 5px;
+        }
+
+        /* Стили для фильтров */
+        .filters {
+            width: 150px;
+            margin-top: 20px;
+        }
+
+        .filter-option {
+            margin-bottom: 10px;
+        }
+
+        .filter-option input[type="radio"] {
+            margin-right: 5px;
+        }
+
+        .filter-option label {
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="window-header">
+            <div class="window-title">Администратор</div>
+            <div class="window-controls">
+                <button class="control-button"></button>
+                <button class="control-button"></button>
+                <button class="control-button"></button>
+            </div>
+        </div>
+
+        <div class="tabs">
+            <button class="tab active" onclick="showTab('create')">Создание отчётов</button>
+            <button class="tab" onclick="showTab('list')">Список отчётов</button>
+            <button class="tab" onclick="showTab('reviews')">Отзывы</button>
+        </div>
+
+        <div id="createReport" class="content active">
+            <div class="form-group">
+                <label for="title">Заголовок:</label>
+                <input type="text" id="title" name="title">
+            </div>
+            <div class="form-group">
+                <label for="content">Содержание:</label>
+                <textarea id="content" name="content"></textarea>
+            </div>
+            <button class="create-button">Создать</button>
+        </div>
+
+        <div id="reportList" class="content">
+            <ul class="list">
+                <li>Отчёт 1</li>
+                <li>Отчёт 2</li>
+                <li class="selected">Отчёт 3</li>
+                <li>Отчёт 4</li>
+            </ul>
+            <div class="pagination">
+                <a href="#">&lt;&lt; Prev</a>
+                <a href="#">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">4</a>
+                <a href="#">5</a>
+                <a href="#">6</a>
+                <a href="#">7</a>
+                <a href="#">8</a>
+                <a href="#">9</a>
+                <a href="#">10</a>
+                <a href="#">Next &gt;&gt;</a>
+            </div>
+        </div>
+
+        <div id="reviewList" class="content">
+            <div style="display: flex;">
+                <!-- Список отзывов -->
+                <div style="flex: 3; padding-right: 20px;">
+                    <ul class="list">
+                        <li>Отзыв 1</li>
+                        <li>Отзыв 2</li>
+                        <li class="selected">Отзыв 3</li>
+                        <li>Отзыв 4</li>
+                    </ul>
+        
+                    <div class="pagination">
+                        <a href="#">&lt;&lt; Prev</a>
+                        <a href="#">1</a>
+                        <a href="#">2</a>
+                        <a href="#">3</a>
+                        <a href="#">4</a>
+                        <a href="#">5</a>
+                        <a href="#">6</a>
+                        <a href="#">7</a>
+                        <a href="#">8</a>
+                        <a href="#">9</a>
+                        <a href="#">10</a>
+                        <a href="#">Next &gt;&gt;</a>
+                    </div>
+                </div>
+        
+                <!-- Раздел с фильтрами -->
+                <div class="filters" style="flex: 1; padding-left: 20px; margin-top: -10px;">
+                    <div style="border: 1px solid #ccc; padding: 15px; border-radius: 5px;">
+                        <h3 style="margin: 0 0 10px; font-size: 16px; color: #333;">Фильтры</h3>
+                        <div class="filter-option">
+                            <input type="radio" id="setting1" name="filter" value="1">
+                            <label for="setting1">Setting 1</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="radio" id="setting2" name="filter" value="2">
+                            <label for="setting2">Setting 2</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="radio" id="setting3" name="filter" value="3" checked>
+                            <label for="setting3">Setting 3</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="radio" id="setting4" name="filter" value="4">
+                            <label for="setting4">Setting 4</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>    
+    <script>
+        function showTab(tabName) {
+            document.querySelectorAll('.content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            if (tabName === 'create') {
+                document.getElementById('createReport').classList.add('active');
+                document.querySelector('.tab:nth-child(1)').classList.add('active');
+            } else if (tabName === 'list') {
+                document.getElementById('reportList').classList.add('active');
+                document.querySelector('.tab:nth-child(2)').classList.add('active');
+            } else {
+                document.getElementById('reviewList').classList.add('active');
+                document.querySelector('.tab:nth-child(3)').classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
+

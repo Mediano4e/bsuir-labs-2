@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            background-color: #4CAF50;
+            color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 32px;
+        }
+        .content {
+            margin-top: 100px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .form-container {
+            width: 90%;
+            max-width: 400px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .form-container label {
+            display: block;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+        .form-container input {
+            width: 100%;
+            max-width: 378px;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-container button {
+            padding: 12px 25px;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            width: 100%;
+        }
+        .message {
+            margin-top: 20px;
+            padding: 15px 20px;
+            border-radius: 5px;
+            font-size: 18px;
+            text-align: center;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .success {
+            background-color: #dff0d8;
+            color: #3c763d;
+        }
+        .error {
+            background-color: #f2dede;
+            color: #a94442;
+        }
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            width: 100%;
+        }
+        .button-container button {
+            width: 48%;
+        }
+        .back-button {
+            background-color: #9e9e9e;
+        }
+        .back-button:hover {
+            transform: scale(1.05);
+        }
+        .form-container button[type="submit"] {
+            background-color: #4CAF50;
+        }
+        .form-container button[type="submit"]:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Create Employee</h1>
+    </div>
+
+    <div class="content">
+        {% if message %}
+            <div class="message {{ message_type }}">
+                {{ message }}
+            </div>
+        {% endif %}
+
+        <div class="form-container">
+            <form action="/add_employee/" method="POST">
+                <label for="full_name">Full Name:</label>
+                <input type="text" id="full_name" name="full_name" required><br>
+
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" required><br>
+
+                <label for="risk_category">Risk Category:</label>
+                <input type="number" id="risk_category" name="risk_category" required><br>
+
+                <label for="contract_id">Contract ID:</label>
+                <input type="number" id="contract_id" name="contract_id" required><br>
+
+                <label for="organization_id">Organization ID:</label>
+                <input type="number" id="organization_id" name="organization_id" required><br>
+
+                <div class="button-container">
+                    <button type="button" class="back-button" onclick="location.href='/'">Back to Main Menu</button>
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
